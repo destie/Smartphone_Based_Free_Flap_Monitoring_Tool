@@ -1,0 +1,18 @@
+###################Function to check spacing of a video/image file############################################
+def checkspacing(infile):
+#Import packages
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import cv2
+    
+    #Read in the file
+    img = cv2.imread(infile)
+    
+    #Convert to correct color space
+    img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
+    
+    #Check where the video is located - for my code I needed it centered at 100:300/100:300
+    img_left = img[100:300,100:300]
+    
+    #Show if the image is there/ what happens when I crop to the center
+    plt.imshow(img_left)
