@@ -1,5 +1,5 @@
 # Smartphone_Based_Free_Flap_Monitoring_Tool
-Code and information overview for "Free Flap" monitoring tool created using video data and machine learning. 
+This contains code and an information overview for "Free Flap" monitoring tool created using video data and machine learning. 
 
 A "Free flap" is a medical term for a procedure that involves transporting tissue and a corresponding blood supply from one part of the body to the next. An important component of monitoring the success of a free-flap (both during the procedure and immediately after), is to ensure vascular sufficiency. This means that it's important to ensure blood flow is still occuring in the transplanted tissue.
 
@@ -16,7 +16,7 @@ https://meeting.aaps1921.org/abstracts/2019/25.cgi
 
 https://journals.lww.com/prsgo/fulltext/2019/04001/abstract_qs14__novel_smartphone_based_free_flap.161.aspx
 
-If you'd like to use this data or replicate this study, please cite:
+****To cite this project or use any of the code please refer to the following three studies:
 -	Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Plastic and Reconstructive Surgery – Global Open. 2019 Apr; Vol 7, Issue 42, p111-112.
 
 Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Short Oral Presentation at: The Plastic Surgery Research Council (PSRC) Annual Meeting, Presented by: Destie Provenzano. 2019 May 2 - 5; Baltimore, MD 
