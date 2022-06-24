@@ -1,0 +1,13 @@
+#######################################################################################################################################################################################################
+#######This code takes the data from each frame and divides them over regions of the image that don't contain subject data to normalize changes in lighting and pixels ################################
+
+def comparison(outfile, outfile2):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    data = np.genfromtxt(outfile,delimiter=',')
+    data2 = np.genfromtxt(outfile2,delimiter=',')    
+    #blue, green, and red
+    data = data[5:914, [0,2]]
+    data2 = data2[5:914, [0,2]]
+    data_combined = np.concatenate((data, data2), axis=1)
+    plt.plot(data_combined)
