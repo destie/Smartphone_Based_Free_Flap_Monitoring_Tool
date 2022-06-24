@@ -1,0 +1,18 @@
+######################################################################################################################################
+####################################This is a very simple method to get pulse from the data - VERY easy to do!########################
+
+def pulse_check(outfile, outfile2, colorspecthreshhold):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    data = np.genfromtxt(outfile,delimiter=',')
+    data_1 = data[5:914, [2]]
+    data_2 = data[6:915, [2]]
+    data_3 = data_2/data_1
+    
+    pulse_count = 0
+    if data_3 > colorspecthreshhold:
+        pulse_count + 1
+    if data_3 < colorspecthreshhold:
+        pulse_count + 1  
+        
+    return pulse_count
