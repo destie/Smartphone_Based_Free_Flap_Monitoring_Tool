@@ -1,0 +1,10 @@
+#################################################################################################################################
+###############################Simple code to plot the results of the average color per video frame##############################
+
+def plotagraph(outfile):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    data = np.genfromtxt(outfile,delimiter=',')
+    #blue, green, and red
+    data = data[5:, [0,2]]
+    plt.plot(data)
