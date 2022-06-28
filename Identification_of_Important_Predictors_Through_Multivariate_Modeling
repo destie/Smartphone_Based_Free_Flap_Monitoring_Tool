@@ -1,0 +1,273 @@
+import numpy as np
+import pandas as pd
+import glob
+import matplotlib.pyplot as plt
+
+#Create your times - you may need to paste these manually into the code or redefine per patient depending on your dataset and how it's structured
+normal_time = 5:500
+venous_time = 530:915
+arterial_time = 945:1300
+directory = directory
+
+column_names = ['max_data_venous_occlusion_r',
+'max_data_venous_occlusion_b',
+'max_data_venous_occlusion_g',
+'max_data_normal_time_r',
+'max_data_normal_time_b',
+'max_data_normal_time_g',
+'max_data_arterial_occlusion_r',
+'max_data_arterial_occlusion_b',
+'max_data_arterial_occlusion_g',
+'min_data_venous_occlusion_r',
+'min_data_venous_occlusion_b',
+'min_data_venous_occlusion_g',
+'min_data_normal_time_r',
+'min_data_normal_time_b',
+'min_data_normal_time_g',
+'min_data_arterial_occlusion_r',
+'min_data_arterial_occlusion_b',
+'min_data_arterial_occlusion_g',
+'avg_data_venous_occlusion_r',
+'avg_data_venous_occlusion_b',
+'avg_data_venous_occlusion_g',
+'avg_data_normal_time_r',
+'avg_data_normal_time_b',
+'avg_data_normal_time_g',
+'avg_data_arterial_occlusion_r',
+'avg_data_arterial_occlusion_b',
+'avg_data_arterial_occlusion_g',
+'pulse_data_venous_occlusion_r',
+'pulse_data_venous_occlusion_b',
+'pulse_data_venous_occlusion_g',
+'pulse_data_normal_time_r',
+'pulse_data_normal_time_b',
+'pulse_data_normal_time_g',
+'pulse_data_arterial_occlusion_r',
+'pulse_data_arterial_occlusion_b',
+'pulse_data_arterial_occlusion_g']
+dataset = pd.DataFrame(columns = column_names)
+
+
+for file in glob.glob(directory, recursive=False):
+
+    #Load in dataset
+    data = np.genfromtxt(file,delimiter = ',')
+   
+    #Generate relevant datasets to get variables from
+    data_venous_occlusion_r = data[venous_time, [2]]
+    data_venous_occlusion_b = data[venous_time, [1]]
+    data_venous_occlusion_g = data[venous_time, [0]]
+    data_normal_time_r = data[normal_time, [2]]
+    data_normal_time_b = data[normal_time, [1]]
+    data_normal_time_g = data[normal_time, [0]]
+    data_arterial_occlusion_r = data[arterial_time, [2]]
+    data_arterial_occlusion_b = data[arterial_time, [1]]
+    data_arterial_occlusion_g = data[arterial_time, [0]]
+   
+    #Get patient ID
+    patient_id = file.split("/")[-1]
+   
+    #Find the pulse count for each of the above
+    def pulse_check(outfile, colorspecthreshhold):
+        import numpy as np
+        import matplotlib.pyplot as plt
+        data_1 = outfile
+        data_2 = outfile[1:]
+        data_3 = data_2/data_1
+       
+        pulse_count = 0
+        if data_3 > colorspecthreshhold:
+            pulse_count + 1
+        if data_3 < colorspecthreshhold:
+            pulse_count + 1  
+           
+        return pulse_count
+   
+   
+    #Find the maximum for each of the above
+    max_data_venous_occlusion_r = max(data_venous_occlusion_r)
+    max_data_venous_occlusion_b = max(data_venous_occlusion_b)
+    max_data_venous_occlusion_g = max(data_venous_occlusion_g)
+    max_data_normal_time_r = max(data_normal_time_r)
+    max_data_normal_time_b = max(data_normal_time_b)
+    max_data_normal_time_g = max(data_normal_time_g)
+    max_data_arterial_occlusion_r = max(data_arterial_occlusion_r)
+    max_data_arterial_occlusion_b = max(data_arterial_occlusion_b)
+    max_data_arterial_occlusion_g = max(data_arterial_occlusion_g)
+   
+    #Find the minimum for each of the above
+    min_data_venous_occlusion_r = min(data_venous_occlusion_r)
+    min_data_venous_occlusion_b = min(data_venous_occlusion_b)
+    min_data_venous_occlusion_g = min(data_venous_occlusion_g)
+    min_data_normal_time_r = min(data_normal_time_r)
+    min_data_normal_time_b = min(data_normal_time_b)
+    min_data_normal_time_g = min(data_normal_time_g)
+    min_data_arterial_occlusion_r = min(data_arterial_occlusion_r)
+    min_data_arterial_occlusion_b = min(data_arterial_occlusion_b)
+    min_data_arterial_occlusion_g = min(data_arterial_occlusion_g)
+
+    #Find the average for each of the above
+    avg_data_venous_occlusion_r = np.average(data_venous_occlusion_r)
+    avg_data_venous_occlusion_b = np.average(data_venous_occlusion_b)
+    avg_data_venous_occlusion_g = np.average(data_venous_occlusion_g)
+    avg_data_normal_time_r = np.average(data_normal_time_r)
+    avg_data_normal_time_b = np.average(data_normal_time_b)
+    avg_data_normal_time_g = np.average(data_normal_time_g)
+    avg_data_arterial_occlusion_r = np.average(data_arterial_occlusion_r)
+    avg_data_arterial_occlusion_b = np.average(data_arterial_occlusion_b)
+    avg_data_arterial_occlusion_g = np.average(data_arterial_occlusion_g)
+
+    #Find the pulse for each of the above
+    pulse_data_venous_occlusion_r = pulse_check(data_venous_occlusion_r)
+    pulse_data_venous_occlusion_b = pulse_check(data_venous_occlusion_b)
+    pulse_data_venous_occlusion_g = pulse_check(data_venous_occlusion_g)
+    pulse_data_normal_time_r = pulse_check(data_normal_time_r)
+    pulse_data_normal_time_b = pulse_check(data_normal_time_b)
+    pulse_data_normal_time_g = pulse_check(data_normal_time_g)
+    pulse_data_arterial_occlusion_r = pulse_check(data_arterial_occlusion_r)
+    pulse_data_arterial_occlusion_b = pulse_check(data_arterial_occlusion_b)
+    pulse_data_arterial_occlusion_g = pulse_check(data_arterial_occlusion_g) 
+   
+
+    dataset.append(patient_id,
+                    max_data_venous_occlusion_r,
+                    max_data_venous_occlusion_b,
+                    max_data_venous_occlusion_g,
+                    max_data_normal_time_r,
+                    max_data_normal_time_b,
+                    max_data_normal_time_g,
+                    max_data_arterial_occlusion_r,
+                    max_data_arterial_occlusion_b,
+                    max_data_arterial_occlusion_g,
+                    min_data_venous_occlusion_r,
+                    min_data_venous_occlusion_b,
+                    min_data_venous_occlusion_g,
+                    min_data_normal_time_r,
+                    min_data_normal_time_b,
+                    min_data_normal_time_g,
+                    min_data_arterial_occlusion_r,
+                    min_data_arterial_occlusion_b,
+                    min_data_arterial_occlusion_g,
+                    avg_data_venous_occlusion_r,
+                    avg_data_venous_occlusion_b,
+                    avg_data_venous_occlusion_g,
+                    avg_data_normal_time_r,
+                    avg_data_normal_time_b,
+                    avg_data_normal_time_g,
+                    avg_data_arterial_occlusion_r,
+                    avg_data_arterial_occlusion_b,
+                    avg_data_arterial_occlusion_g,
+                    pulse_data_venous_occlusion_r,
+                    pulse_data_venous_occlusion_b,
+                    pulse_data_venous_occlusion_g,
+                    pulse_data_normal_time_r,
+                    pulse_data_normal_time_b,
+                    pulse_data_normal_time_g,
+                    pulse_data_arterial_occlusion_r,
+                    pulse_data_arterial_occlusion_b,
+                    pulse_data_arterial_occlusion_g
+                   )
+
+
+Simplified_Col_Names = ["PID", "Max_g", "Max_r", "Max_b", "Min_g", "Min_r", "Min_b", "Avg_g", "Avg_r", "Avg_b", "Pulse_g", "Pulse_r", "Pulse_b", "Outcome"]
+
+#Outcome: Arterial = 1, Venous = 2, Normal = 0
+
+#Create simplified dataset for model building
+data_simplified = dataset[['max_data_arterial_occlusion_r': 'Max_r',
+'max_data_arterial_occlusion_b': 'Max_b',
+'max_data_arterial_occlusion_g': 'Max_g',
+'min_data_arterial_occlusion_r': 'Min_r',
+'min_data_arterial_occlusion_b': 'Min_b',
+'min_data_arterial_occlusion_g': 'Min_g',
+'avg_data_arterial_occlusion_r': 'Avg_r',
+'avg_data_arterial_occlusion_b': 'Avg_b',
+'avg_data_arterial_occlusion_g': 'Avg_g',
+'pulse_data_arterial_occlusion_r': 'Pulse_r',
+'pulse_data_arterial_occlusion_b': 'Pulse_b',
+'pulse_data_arterial_occlusion_g': 'Pulse_g']]
+data_simplified["Outcome"] = 1
+
+data_simplified_v = dataset[['max_data_venous_occlusion_r': 'Max_r',
+'max_data_venous_occlusion_b': 'Max_b',
+'max_data_venous_occlusion_g': 'Max_g',
+'min_data_venous_occlusion_r': 'Min_r',
+'min_data_venous_occlusion_b': 'Min_b',
+'min_data_venous_occlusion_g': 'Min_g',
+'avg_data_venous_occlusion_r': 'Avg_r',
+'avg_data_venous_occlusion_b': 'Avg_b',
+'avg_data_venous_occlusion_g': 'Avg_g',
+'pulse_data_venous_occlusion_r': 'Pulse_r',
+'pulse_data_venous_occlusion_b': 'Pulse_b',
+'pulse_data_venous_occlusion_g': 'Pulse_g']]
+data_simplified_v["Outcome"] = 2
+
+data_simplified_n = dataset[['max_data_normal_time_r': 'Max_r',
+'max_data_normal_time_b': 'Max_b',
+'max_data_normal_time_g': 'Max_g',
+'min_data_normal_time_r': 'Min_r',
+'min_data_normal_time_b': 'Min_b',
+'min_data_normal_time_g': 'Min_g',
+'avg_data_normal_time_r': 'Avg_r',
+'avg_data_normal_time_b': 'Avg_b',
+'avg_data_normal_time_g': 'Avg_g',
+'pulse_data_normal_time_r': 'Pulse_r',
+'pulse_data_normal_time_b': 'Pulse_b',
+'pulse_data_normal_time_g': 'Pulse_g']]
+data_simplified_n["Outcome"] = 0
+
+data_simplified = data_simplified.append([data_simplified_v, data_simplified_n])
+
+
+
+#Build the final model - I'm selecting random forest just arbitrarily to see what variables matter most and if there is a difference 
+from sklearn.model_selection import train_test_split
+
+#First split into training and testing 
+X = data_simplified.drop('Outcome',axis=1)
+y = data_simplified['Outcome']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+#Then use a random forest to train the data 
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor(n_estimators = 1000, random_state = 42)
+regressor.fit(X_train, y_train)
+
+#Predict the outcomes
+y_pred = regressor.predict(X_test)
+
+#Look at difference between actual and predicted values
+df=pd.DataFrame({'Actual':y_test, 'Predicted':y_pred})
+
+#Getting some metrics
+from sklearn import metrics
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+#Just for fun - to plot fitted values:
+import seaborn as sns
+plt.figure(figsize=(5, 7))
+ax = sns.distplot(y, hist=False, color="r", label="Actual Value")
+sns.distplot(y_pred, hist=False, color="b", label="Fitted Values" , ax=ax)
+plt.show()
+plt.close()
+
+#To show this as a tree:
+import pydot
+Tree = regressor.estimators_[5]
+from sklearn import tree
+plt.figure(figsize=(25,15))
+tree.plot_tree(Tree,filled=True, 
+              rounded=True, 
+              fontsize=14);
+
+#Finally now that we've confirmed the data is fit well - feature importances!
+regressor.feature_importances_
+plt.barh(boston.feature_names, regressor.feature_importances_)
+
+
+#Can plot them sorted like so:
+sorted_idx = regressor.feature_importances_.argsort()
+plt.barh(simplified_dataset.feature_names[sorted_idx], regressor.feature_importances_[sorted_idx])
+plt.xlabel("Random Forest Feature Importance")
