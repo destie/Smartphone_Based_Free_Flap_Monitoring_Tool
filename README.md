@@ -16,8 +16,9 @@ https://meeting.aaps1921.org/abstracts/2019/25.cgi
 
 https://journals.lww.com/prsgo/fulltext/2019/04001/abstract_qs14__novel_smartphone_based_free_flap.161.aspx
 
-****To cite this project or use any of the code please refer to the following three publications:
--	Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Plastic and Reconstructive Surgery – Global Open. 2019 Apr; Vol 7, Issue 42, p111-112.
+**To cite this project or use any of the code please refer to the following three publications:**
+
+Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Plastic and Reconstructive Surgery – Global Open. 2019 Apr; Vol 7, Issue 42, p111-112.
 
 Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Short Oral Presentation at: The Plastic Surgery Research Council (PSRC) Annual Meeting, Presented by: Destie Provenzano. 2019 May 2 - 5; Baltimore, MD 
 
