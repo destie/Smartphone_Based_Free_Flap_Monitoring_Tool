@@ -16,6 +16,30 @@ https://meeting.aaps1921.org/abstracts/2019/25.cgi
 
 https://journals.lww.com/prsgo/fulltext/2019/04001/abstract_qs14__novel_smartphone_based_free_flap.161.aspx
 
+
+Included code files
+
+**Data_Normalization**
+Creates and normalizes a region used to compute the image (such as the skin) to the background of the image. 
+
+**Data_Preprocessing_Check_Spacing**
+Data validation to ensure the region of the image the skin is contained in.
+
+**Data_Visualization**
+Visualizes the output of the preprocessed data from a video. 
+
+**Identification_of_Important_Predictors_Through_Multivariate_Modeling**
+Uses a predictive model to identify the important predictors of venous and arterial occlusion on the video data based on time points. 
+
+**Pulse_Count**
+Generates heart rate and pulse count from a video. 
+Create Pulse_Count
+
+**Video_Data_Processing**
+How to quickly process video data as a series of slices. 
+
+
+
 **To cite this project or use any of the code please refer to the following three publications:**
 
 Provenzano D, Chandawarker A, Caterson E. Novel Smartphone-based Free Flap Monitoring Tool Using Machine Learning. Plastic and Reconstructive Surgery – Global Open. 2019 Apr; Vol 7, Issue 42, p111-112.
